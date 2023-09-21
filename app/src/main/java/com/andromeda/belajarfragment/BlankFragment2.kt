@@ -7,32 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 
-class BlankFragment1 : Fragment() {
+class BlankFragment2 : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank1, container, false)
+        return inflater.inflate(R.layout.fragment_blank2, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fragment2 = BlankFragment2()
+        val fragment1 = BlankFragment1()
 
         // direct call findViewById() using view, in Activity not using view
-        // val button1: Button = view.findViewById(R.id.button_one)
-        view.findViewById<Button>(R.id.button_one).setOnClickListener {
+        // val button2: Button = view.findViewById(R.id.button_one)
+        view.findViewById<Button>(R.id.button_two).setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
-                replace(R.id.container, fragment2, BlankFragment2::class.java.simpleName)
+                replace(R.id.container, fragment1, BlankFragment1::class.java.simpleName)
                     .addToBackStack(null)
                     .commit()
             }
         }
-
-
     }
 }
