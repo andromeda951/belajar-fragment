@@ -6,8 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 
 class BlankFragment2 : Fragment() {
+
+    var desc: String? = null
+
+    companion object {
+        val EXTRA_NAME = "extra_name"
+        val EXTRA_DESC = "extra_desc"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,5 +39,18 @@ class BlankFragment2 : Fragment() {
                     .commit()
             }
         }
+
+        view.findViewById<TextView>(R.id.text_name)?.text = arguments?.getString(EXTRA_NAME)
+        view.findViewById<TextView>(R.id.text_desc)?.text =
+            savedInstanceState?.getString(EXTRA_DESC) ?: desc
     }
+
+//    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+//        super.onViewStateRestored(savedInstanceState)
+//
+//        view?.findViewById<TextView>(R.id.text_name)?.text = arguments?.getString(EXTRA_NAME)
+//        view?.findViewById<TextView>(R.id.text_desc)?.text =
+//            savedInstanceState?.getString(EXTRA_DESC) ?: desc
+//
+//    }
 }
